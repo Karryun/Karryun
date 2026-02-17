@@ -4,10 +4,10 @@
 
 ### 성능 요약
 
-메모리: 32,096  KB, 시간: 131  ms, 코드길이: 1,123 Bytes
+메모리: 30,336  KB, 시간: 124  ms, 코드길이: 1,083 Bytes
 
 ### 제출 일자
 
-2026-02-14 22:15
+2026-02-17 19:31
 
 > 출처: SW Expert Academy, https://swexpertacademy.com/main/code/problem/problemList.do

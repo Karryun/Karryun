@@ -1,8 +1,8 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Solution {
 	// 우상 우 우하 하
-	static int[] down = { -1, 0, 1, 1 };
+	static int[] updown = { -1, 0, 1, 1 };
 	static int[] right = { 1, 1, 1, 0 };
 
 	public static void main(String[] args) {
@@ -12,8 +12,8 @@ public class Solution {
 		for (int tc = 1; tc <= t; tc++) {
 			int n = sc.nextInt();
 			char[][] arr = new char[n][n];
-			boolean ans = false;
-			
+			String YesOrNo = "NO";
+
 			for (int i = 0; i < n; i++) {
 				String s = sc.next();
 				for (int j = 0; j < n; j++) {
@@ -23,28 +23,27 @@ public class Solution {
 
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
-					if (arr[i][j] == '.')
-						continue;
-					int row = i;
-					int col = j;
+					if (arr[i][j] != 'o') continue;
+					
 					for (int k = 0; k < 4; k++) {
-						boolean isfive = true;
-						for (int p = 0; p < 5; p++) {
-							int nr = row + (down[k] * p);
-							int nc = col + (right[k] * p);
-
+						int cnt = 1;
+						for (int p = 1; p < 5; p++) { // 한 방향마다 오목인지 검정
+							int nr = i + updown[k] * p;
+							int nc = j + right[k] * p;
+							
 							if (nr < 0 || nr >= n || nc < 0 || nc >= n || arr[nr][nc] != 'o') {
-								isfive = false;
 								break;
 							}
+							cnt++;
 						}
-						if (isfive) ans = true;
+						if (cnt == 5) {
+							YesOrNo = "YES";
+							break;
+						}
 					}
-
 				}
 			}
-			if (ans) System.out.println("#" + tc + " " + "YES");
-			else System.out.println("#" + tc + " " + "NO");
+			System.out.println("#" + tc + " " + YesOrNo);
 		}
 	}
 }
